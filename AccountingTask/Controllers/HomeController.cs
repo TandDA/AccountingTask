@@ -11,8 +11,8 @@ namespace AccountingTask.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ApplicationContext _db;
-        private UserManager<IdentityUser> _userManager;
-        public HomeController(ILogger<HomeController> logger, ApplicationContext db, UserManager<IdentityUser> userManager)
+        private UserManager<ApplicationUser> _userManager;
+        public HomeController(ILogger<HomeController> logger, ApplicationContext db, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _db = db;
@@ -21,9 +21,9 @@ namespace AccountingTask.Controllers
 
         public IActionResult Index()
         {
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
-                var id =  _userManager.GetUserId(User);
+                var id = _userManager.GetUserId(User);
                 var user = _db.Users.FirstOrDefault(u => u.Id == id);
                 return View(user.ConsumptionModels);
             }

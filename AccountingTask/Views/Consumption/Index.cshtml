@@ -1,0 +1,13 @@
+﻿<form method="post" asp-controller="Consumption" asp-action="Index">
+	<input type="hidden" value="@ViewBag.BookId" name="BookId" />
+	<table>
+		<tr>
+			<td><p>Введите сумму траты </p></td>
+			<td><input type="text" name="ConsuptionSum" /> </td>
+		</tr>
+		<tr>
+			<td><p>Введите пояснение к трате</p></td>
+			<td><input type="text" name="ConsuptionText" /> </td>
+		</tr>
+	</table>
+</form>
