@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ConsumptionModel>
+@{
+    ViewData["Title"] = "Home Page";
+    var consumprionData = Model;
+}
+
+<div class="text-center">
+    @if(User.Identity.IsAuthenticated)
+    {
+        <h1 class="display-4">У вас @User.Identity.Name</h1>
+        @foreach (var consumprion in consumprionData)
+        {
+            <h1 class="display-4">@consumprion.ConsumptionText</h1>
+        }
+    }
+    else
+    {
+        <h1 class="display-4">Авторизуйтесь чтобы увидеть учет расходов</h1>
+    }
+</div>
