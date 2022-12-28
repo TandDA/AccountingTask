@@ -12,6 +12,6 @@ public class ApplicationUser : IdentityUser
 {
     public double Money { get; set; }
    
-    public List<ConsumptionModel> ConsumptionModels { get; set; }
+    public List<Consumption> Consumptions { get; set; }
 }
 

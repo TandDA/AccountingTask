@@ -3,6 +3,7 @@ using AccountingTask.Data;
 using AccountingTask.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace AccountingTask.Controllers
@@ -24,8 +25,8 @@ namespace AccountingTask.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var id = _userManager.GetUserId(User);
-                var user = _db.Users.FirstOrDefault(u => u.Id == id);
-                return View(user.ConsumptionModels);
+                var user = _db.Users.Include(u => u.Consumptions).FirstOrDefault(u => u.Id == id);
+                return View(user.Consumptions);
             }
             return View();
         }

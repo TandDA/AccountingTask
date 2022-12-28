@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ConsumptionModel>
+﻿@model IEnumerable<Consumption>
 @{
 	ViewData["Title"] = "Home Page";
 	var consumprionData = Model;
@@ -11,10 +11,15 @@
 		<a asp-controller="Consumption" asp-action="Index">Добавить трату</a>
 		@if (consumprionData != null)
 		{
-			@foreach (var consumprion in consumprionData)
+			double sum = 0;
+			@foreach (var consumption in consumprionData)
 			{
-				<h1 class="display-4">@consumprion.ConsumptionText</h1>
+				sum += consumption.ConsumptionSum;
+				<h1 class="display-6">Трата:@consumption.ConsumptionText</h1>
+				<h1 class="display-6">Цена:@consumption.ConsumptionSum</h1>
+				<hr />
 			}
+			<h1 class="display-3">Всего к оплате:@sum</h1>
 		}
 	}
 	else

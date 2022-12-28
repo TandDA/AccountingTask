@@ -8,7 +8,7 @@ namespace AccountingTask.Data;
 
 public class ApplicationContext : IdentityDbContext<ApplicationUser>
 {
-    public DbSet<ConsumptionModel> Consumptions { get; set; } 
+    public DbSet<Consumption> Consumptions { get; set; } 
     public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
     {
